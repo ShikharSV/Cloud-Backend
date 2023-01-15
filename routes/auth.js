@@ -6,9 +6,10 @@ const { body, validationResult } = require('express-validator');
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const JWT_SECRET="Horsemen5599";
+
 // Create a user using: POST "api/auth/createuser"  No login required
 router.post('/createuser',[
-    body('password','Enter a valid name').isLength({ min: 3 }),
+    body('name','Enter a valid name').isLength({ min: 3 }),
     body('email','Enter a valid email').isEmail(),
     body('password','Must must be atleast 8 characters').isLength({ min: 8 })
 ],async(req, res)=>{
@@ -48,5 +49,4 @@ router.post('/createuser',[
         res.send(500).send("Some error occured");
     }
 })
-
 module.exports=router;  
